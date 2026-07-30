@@ -1,22 +1,25 @@
-const countdown = document.querySelector("[data-event-date]");
+const form = document.querySelector("#commercial-form");
+const success = document.querySelector("#form-success");
 
-function updateCountdown() {
-  if (!countdown) return;
+if (form) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const message = [
+      "Olá, conheci as oportunidades de parceria do LEGADO RUN e gostaria de receber mais informações sobre as cotas disponíveis para minha empresa.",
+      "",
+      `Nome: ${data.get("nome") || ""}`,
+      `Empresa: ${data.get("empresa") || ""}`,
+      `Cargo: ${data.get("cargo") || ""}`,
+      `Telefone: ${data.get("telefone") || ""}`,
+      `E-mail: ${data.get("email") || ""}`,
+      `Segmento: ${data.get("segmento") || ""}`,
+      `Cota de interesse: ${data.get("cota") || ""}`,
+      `Faixa de investimento: ${data.get("investimento") || ""}`,
+      `Mensagem: ${data.get("mensagem") || ""}`,
+    ].join("\n");
 
-  const target = new Date(countdown.dataset.eventDate).getTime();
-  const now = Date.now();
-  const distance = Math.max(0, target - now);
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  countdown.querySelector("[data-days]").textContent = String(days);
-  countdown.querySelector("[data-hours]").textContent = String(hours).padStart(2, "0");
-  countdown.querySelector("[data-minutes]").textContent = String(minutes).padStart(2, "0");
-  countdown.querySelector("[data-seconds]").textContent = String(seconds).padStart(2, "0");
+    if (success) success.classList.add("is-visible");
+    window.open(`https://wa.me/message/5JKQOATHVNQGC1?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+  });
 }
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
