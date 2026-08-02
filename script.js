@@ -6,7 +6,7 @@ if (form) {
     event.preventDefault();
     const data = new FormData(form);
     const message = [
-      "Olá, conheci as oportunidades de parceria do LEGADO RUN e gostaria de receber mais informações sobre as cotas disponíveis para minha empresa.",
+      "Olá, conheci as oportunidades de parceria do LEGADO RUN e gostaria de receber mais informações sobre cotas disponíveis ou uma parceria personalizada para minha empresa.",
       "",
       `Nome: ${data.get("nome") || ""}`,
       `Empresa: ${data.get("empresa") || ""}`,

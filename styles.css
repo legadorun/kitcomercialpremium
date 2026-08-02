@@ -1056,24 +1056,27 @@ p {
   padding: 22px;
 }
 
-.slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 16px 0;
+.availability-meter {
+  position: relative;
+  height: 10px;
+  margin: 18px 0 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(185, 244, 0, 0.24);
+  border-radius: 999px;
 }
 
-.slots span {
-  width: 22px;
-  height: 22px;
-  border: 1px solid rgba(185, 244, 0, 0.65);
-  border-radius: 4px;
-  background: rgba(185, 244, 0, 0.08);
+.availability-meter span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--acid));
+  border-radius: inherit;
+  box-shadow: 0 0 18px rgba(185, 244, 0, 0.28);
 }
 
-.bronze-slots span {
-  width: 18px;
-  height: 18px;
+.meter-prata span {
+  width: 16.666%;
 }
 
 .availability-grid small {
@@ -1126,12 +1129,22 @@ p {
     rgba(10, 12, 8, 0.82);
 }
 
+.availability-grid article.is-confirmed .availability-meter {
+  border-color: rgba(196, 155, 68, 0.62);
+}
+
+.availability-grid article.is-confirmed .availability-meter span {
+  background: linear-gradient(90deg, var(--gold), #f1d27a);
+  box-shadow: 0 0 18px rgba(196, 155, 68, 0.36);
+}
+
 .believers-board {
   min-height: 220px;
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   place-items: center;
   align-content: center;
-  gap: 12px;
+  gap: 20px;
   padding: clamp(28px, 5vw, 54px);
   background:
     linear-gradient(135deg, rgba(185, 244, 0, 0.15), rgba(255, 255, 255, 0.035)),
@@ -1143,10 +1156,16 @@ p {
 }
 
 .believer-card {
-  width: min(680px, 100%);
+  width: 100%;
+  height: 100%;
   display: grid;
   justify-items: center;
+  align-content: start;
   gap: 18px;
+  padding: 24px;
+  background: rgba(3, 4, 2, 0.36);
+  border: 1px solid var(--white-line);
+  border-radius: 8px;
 }
 
 .believer-card span {
@@ -1162,17 +1181,19 @@ p {
 }
 
 .believer-card img {
-  width: min(520px, 100%);
+  width: min(420px, 100%);
+  height: 220px;
   padding: 22px;
   background: #fff;
   border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 8px;
+  object-fit: contain;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
 }
 
 .believer-card strong {
   color: var(--acid-2);
-  font-size: clamp(1.8rem, 4vw, 3.8rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.6rem);
   line-height: 0.98;
   text-transform: uppercase;
 }
@@ -1529,10 +1550,11 @@ li::before {
 
 .seal-mark {
   aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   padding: 32px;
   border: 2px solid var(--acid);
   border-radius: 50%;
@@ -1544,17 +1566,25 @@ li::before {
 
 .seal-mark span,
 .seal-mark em {
+  display: block;
+  width: 100%;
   color: var(--acid);
-  font-size: 0.9rem;
+  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
   font-style: normal;
   font-weight: 950;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
+  line-height: 1.18;
+  text-align: center;
 }
 
 .seal-mark strong {
+  display: block;
+  width: 100%;
   color: var(--text);
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  line-height: 0.92;
+  font-size: clamp(1.95rem, 3.4vw, 2.9rem);
+  line-height: 0.98;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .seal-card p:not(.kicker),
@@ -1941,6 +1971,10 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .believers-board {
+    grid-template-columns: 1fr;
+  }
+
   .proof-layout {
     grid-template-columns: 1fr;
   }
@@ -1992,5 +2026,13 @@ textarea {
 
   .seal-mark {
     width: min(280px, 100%);
+  }
+
+  .believer-card {
+    padding: 18px;
+  }
+
+  .believer-card img {
+    height: 180px;
   }
 }
