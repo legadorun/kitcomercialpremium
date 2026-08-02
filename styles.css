@@ -1107,6 +1107,25 @@ p {
   box-shadow: 0 0 18px rgba(185, 244, 0, 0.6);
 }
 
+.slot-status.confirmed {
+  background: rgba(196, 155, 68, 0.16);
+  border-color: rgba(196, 155, 68, 0.58);
+  color: var(--gold);
+}
+
+.slot-status.confirmed::before {
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(196, 155, 68, 0.48);
+}
+
+.availability-grid article.is-confirmed {
+  border-color: rgba(196, 155, 68, 0.58);
+  background:
+    linear-gradient(135deg, rgba(196, 155, 68, 0.18), rgba(255, 255, 255, 0.035)),
+    rgba(10, 12, 8, 0.82);
+}
+
 .believers-board {
   min-height: 220px;
   display: grid;
@@ -1123,14 +1142,42 @@ p {
   box-shadow: var(--shadow);
 }
 
-.believers-board strong {
-  color: var(--acid-2);
-  font-size: clamp(2.5rem, 6vw, 5.4rem);
-  line-height: 0.95;
+.believer-card {
+  width: min(680px, 100%);
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.believer-card span {
+  padding: 9px 12px;
+  background: rgba(196, 155, 68, 0.16);
+  border: 1px solid rgba(196, 155, 68, 0.52);
+  border-radius: 6px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.believers-board p {
+.believer-card img {
+  width: min(520px, 100%);
+  padding: 22px;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
+}
+
+.believer-card strong {
+  color: var(--acid-2);
+  font-size: clamp(1.8rem, 4vw, 3.8rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.believer-card p {
   max-width: 620px;
   margin: 0;
   font-size: 1.08rem;
