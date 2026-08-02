@@ -1181,14 +1181,26 @@ p {
 }
 
 .believer-card img {
-  width: min(420px, 100%);
-  height: 220px;
-  padding: 22px;
-  background: #fff;
+  width: 100%;
+  height: 240px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 8px;
   object-fit: contain;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
+}
+
+.believer-card img.master-clean-logo {
+  background: #fff;
+  padding: 4px;
+  object-fit: contain;
+}
+
+.believer-card img.jets-logo {
+  background: #020714;
+  padding: 0;
+  object-fit: contain;
 }
 
 .believer-card strong {
